@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1"  xml:lang="ko-KR">
+
+     <form id="transferTest">
+	 
+	    <field name="transferDest"  type="digits?minlength=4">
+            <property name="inputmodes" value="dtmf"/>
+		    <property name="termchar" value="#*" />            
+            <property name="interdigittimeout" value="3s"/>
+	    
+	        <prompt timeout="5s" bargein="true">
+		       <audio>연결을 원하시는 번호를 입력하시고 우물정을 누르세요.</audio>
+             </prompt>  
+             <noinput> 
+                <prompt mmi:control="application.mmiControl$.prompt()">입력이 없습니다. </prompt>
+                <reprompt/> 
+             </noinput>
+             <nomatch> 
+                <prompt mmi:control="application.mmiControl$.prompt()">잘못된 입력입니다. </prompt>
+                <reprompt/> 
+             </nomatch>
+             <noinput count="3"> <goto next="#terminate"/> </noinput>
+             <nomatch count="3"> <goto next="#terminate"/> </nomatch>
+
+	    </field>
+        <!--트랜스퍼 명령을 실행한다.-->
+        <transfer  name="transferTel"  destexpr="transferDest" connecttimeout="30s" type="blind" >
+			<prompt >연결해드리겠습니다.</prompt>
+		</transfer>		
+		
+		<block name="terminate">
+		   <prompt>죄송합니다. 입력오류 입니다.사용방법을 확인하시고 다시이용해주시기바랍니다. 항상우리나라카드를 이용해주셔서 감사합니다</prompt>
+		  <exit/>            		   
+		</block>
+		
+	 </form>
+	   
+	<form id="terminate">
+	    <block name="terminate">
+		   <prompt>죄송합니다. 입력오류 입니다.사용방법을 확인하시고 다시이용해주시기바랍니다. 항상우리나라카드를 이용해주셔서 감사합니다</prompt>
+		  <exit/>            		   
+		</block>
+	</form>
+	   
+     <catch event="connection.disconnect.hangup connection.disconnect.transfer"> 
+        <assign name="result" expr="'ok'" />
+        <return namelist="result" />
+     </catch>
+</vxml>

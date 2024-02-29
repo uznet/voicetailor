@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ccxml PUBLIC "-//W3C//DTD CCXML 1.0//EN" 
+  "http://www.w3.org/TR/2010/CR-ccxml-20100401/ccxml.dtd">
+
+<ccxml version="1.0">
+        <var name="connectionid_in" />
+        <var name="connectionid_out" />
+        <var name="dialogid"  />
+        <var name="sendid"  />
+        <var name="connectedTime" expr="''"/> 
+        <var name="disconnectedTime" expr="''"/> 
+<script>
+<![CDATA[
+function datetime2yyyymmddhhmmss(dt) {
+
+
+    var yyyy = dt.getFullYear();
+    var mm = dt.getMonth() < 9 ? "0" + (dt.getMonth() + 1) : (dt.getMonth() + 1); // getMonth() is zero-based
+    var dd = dt.getDate() < 10 ? "0" + dt.getDate() : dt.getDate();
+    var hh = dt.getHours() < 11 ? "0" + (dt.getHours()-1) : (dt.getHours()-1);
+    var min = dt.getMinutes() < 10 ? "0" + dt.getMinutes() : dt.getMinutes();
+    var ss = dt.getSeconds() < 10 ? "0" + dt.getSeconds() : dt.getSeconds();
+    
+ 
+    return   "".concat(yyyy) + "".concat(mm) + "".concat(dd)+ "".concat(hh)+ "".concat(min)+ "".concat(ss);
+   // return "".concat(yyyy).concat(mm).concat(dd).concat(hh).concat(min).concat(ss);
+}
+ ]]>
+</script>
+
+        <eventprocessor>
+<!-- ================== CCXML Loaded ===================== -->
+           <transition event="ccxml.loaded">
+               <log label="'ccxml.loaded'" expr= "JSON.stringify(session.values)" />
+
+
+		<createcall
+			 dest="session.values.destination" 
+			 callerid="session.values.caller" 
+			 connectionid="connectionid_out" 
+             timeout="session.values.timeout"
+			 aai="'This is application specific data'" 
+			 hints="{callingDevice: 'notSpecified', callCharacteristics: 'voiceUnitCall'}"/>
+
+
+   </transition>
+
+           <transition event="connection.progressing">
+               <log label="event$.name" expr= "''" />
+           </transition>
+
+           <transition event="connection.connected">
+               <log label="event$.name" expr= "session.values.voicexml" />
+
+              <dialogstart 
+                    src = "session.values.voicexml"    
+                    dialogid="dialogid"    
+                    connectionid="connectionid_out" />
+					
+               
+           </transition>
+           <transition event="connection.disconnected">
+               <log label="'EVENT'" expr= "event$.name" />
+              
+               <exit expr = "event$.name" />
+
+           </transition>
+
+
+           <transition event="connection.failed">
+               <log label="'EVENT'" expr= "event$.name" />
+               <log label="'Reason'" expr= "event$.reason" />
+               <exit expr = "event$.name" />
+           </transition>
+
+           <transition event="ccxml.kill">
+               <log label="'EVENT'" expr= "event$.name" />
+               <log label="'reason'" expr="event$.reason"/>  
+               <dialogterminate  dialogid="dialogid" immediate = "false"/> 
+               <exit expr = "event$.name" />
+
+           </transition>
+           
+		   <transition event="browser.status" >
+             <log label= "'browser.status='" expr= "JSON.stringify(event$)" />
+             <assign name= "browserStatus" expr= "JSON.parse(event$.extradata)" />
+             <log label= "'browser.status='" expr= "browserStatus.status" />
+		     <if cond="browserStatus.status=='CLOSED'">
+			   <exit/>
+			 </if>
+		   
+           </transition>
+
+
+    <!-- =============================DIALOG ============================= -->
+           <transition event="dialog.started" >
+               <log label="'EVENT'" expr= "event$.name" />
+<!--
+               <disconnect connectionid="connectionid_out" />
+-->            
+           </transition>
+
+           <transition event="error.dialog.notstarted">
+               <log label="event$.name" expr= "JSON.stringify(event$)" />
+               <exit expr = "event$.name" />
+
+           </transition>
+
+           <transition event="dialog.exit">
+               <log label="'EVENT'" expr= "event$.name" />
+
+               <exit expr = "event$.name" />
+           </transition>
+
+           <transition event="dialog.disconnect">
+               <log label="'EVENT'" expr= "event$.name" />            
+              <disconnect connectionid="connectionid_in" />
+               <exit expr = "event$.name" />
+           </transition>
+
+
+
+          
+       </eventprocessor>
+</ccxml>

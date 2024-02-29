@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ccxml PUBLIC "-//W3C//DTD CCXML 1.0//EN" 
+  "http://www.w3.org/TR/2010/CR-ccxml-20100401/ccxml.dtd">
+<ccxml version="1.0">
+
+
+        <var name="inConnectionid" />
+        <var name="fetchid"  />
+        <var name="sipC"  />
+        <var name="mystate" expr="'start'"/>
+        <script>
+            <![CDATA[
+
+           application.findSipConnectionId=function()
+           {
+           
+               for( var m in session.connections) {
+                   if(session.connections[m].protocol.name =='sip')
+                       return session.connections[m].connectionid;
+	
+               }               
+           
+               return null;
+           }
+
+
+
+           application.makeFetchUrl=function(url,baseName)
+           {
+               var lastIndex = url.lastIndexOf("/");
+			   
+			   if(lastIndex >=0)
+			   {
+			      var fetchUrl = url.substring(0,lastIndex+1) + baseName;
+                  return fetchUrl;
+			   }
+			   return baseName;
+           
+           }
+           
+        ]]>
+
+        </script>
+        <eventprocessor statevariable="mystate">
+           
+           <transition  event="ccxml.loaded" >              
+               <log label="'ccxml.loaded'" expr= "JSON.stringify(session.values)" />              
+           </transition>
+
+           <!-- ============================= CONNECTION ============================= -->
+           <transition  state="start" event="connection.alerting" >
+               <log label="'connection.alerting'" expr= "JSON.stringify(event$)" />
+               <var name="mainccxml" expr="''" />
+
+               <assign name="inConnectionid" expr="event$.connectionid" />
+
+               <if cond="typeof(session.values.startup.trunk) == 'object' &amp;&amp; session.values.startup.trunk.mode=='hybrid'">
+                   <assign name="mainccxml" expr="application.makeFetchUrl(session.values.startup.url.ccxml,'mode_hybrid.ccxml')" />
+               <else/>
+                   <assign name="mainccxml" expr="application.makeFetchUrl(session.values.startup.url.ccxml,'mode_normal.ccxml')" />
+               </if>                 
+               
+               
+               <assign name="mystate" expr="'fetchmain'" />
+    		   <fetch fetchid="fetchid"  next="mainccxml" method="'get'" />
+                              
+           </transition>
+
+           
+           <transition  state="fetchmain" event="fetch.done" >
+               <log label="'fetch.done'" expr= "JSON.stringify(event$.name)" />
+               <assign name="application.connectionid" expr="inConnectionid" />
+
+               <goto fetchid="event$.fetchid" />
+           
+           
+           </transition>
+
+
+           <!-- =========================== ERROR ================== -->
+           <transition event="error.send.*" >
+               <log label="'error.send.failed'" expr= "JSON.stringify(event$)" />               
+               <reject connectionid="inConnectionid" />               
+               <exit/>
+           </transition>
+           <transition event="error.fetch" >
+               <log label="'error.fetch'" expr= "JSON.stringify(event$)" />               
+               <reject connectionid="inConnectionid" />               
+               <exit/>
+           </transition>
+
+           <!-- ========================== DISCONNECTED ============ -->
+           <transition event="connection.disconnected">
+               <exit/>
+           </transition>
+
+
+          
+       </eventprocessor>
+</ccxml>

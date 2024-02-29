@@ -1,0 +1,361 @@
+<%?
+  var cxvm$   = XTemplate.Args.cxvm;
+ var mmi$   = cxvm$.vxml.reqCollect.promptq.mmi;
+  var promptq$ =  cxvm$.vxml.reqCollect.promptq;
+ 
+ var medias$ = cxvm$.vxml.reqCollect.promptq.medias;
+ //var mp3enabled$ = mmi$.interaction.extra.mp3enabled;
+ 
+ function _getAudioItem$(pos)
+ { 
+     for(i in medias$.mediaList){
+		 //var mi = cxvm$.reqCollect.promptq.medias.mediaList[i];
+		 //console.log("pos="+mi.url);
+	     if((--pos) == 0)
+		    return medias$.mediaList[i];
+	 }
+	 return null;
+	 
+ }
+ 
+
+ function _getViewExtraValue$(name)
+ {
+    var  extra=  mmi$.interaction.extra;//_getViewPropertyValue$("content");
+	if(extra)
+	{
+        // first, lookup promptq
+        //console.log("_getViewPropertyValue$("+name+")");
+        for (i in extra)
+        {
+	      if(i == name)
+		  {
+		    return  extra[i];
+		  }
+	   }
+    }	
+    //console.log("_getViewPropertyValue$("+name+")="+value);	
+	return null;
+ }
+
+ 
+ function _getViewTitle$()
+ {
+    var value = _getViewExtraValue$("title");
+	if(typeof(value) != "string" )
+	   value =  "";
+	return value.trim();   	
+ }
+
+ function _getViewText$()
+ {
+    var value = _getViewExtraValue$("text");
+	if(typeof(value) != "string" )
+	{
+	   var ai = _getAudioItem$(1);
+	   if(ai )
+	     value = ai.text;
+	   else 
+         value="???";	   
+	}
+	return value.trim();   	
+ }
+
+  
+ function _getInputType$()
+ {
+ /*
+     var input = _getViewPropertyValue$("input");
+	 if(input != undefined)
+	 {
+     if(input.type == 'digits')
+	    return 'number';		
+     if(input.type == 'date')
+	    return 'date';
+     if(input.type == 'currency')
+	    return 'number';
+     if(input.type == 'number')
+	    return 'number';
+		
+     if(input.type == 'phone')
+	    return 'tel';
+		
+     if(input.type == 'time')
+	    return 'time';
+ 
+     }
+	 */
+     return "text" ;
+ }
+ 
+ 
+ var dtmfGrammarList$ = cxvm$.vxml.reqCollect.grammarDtmf.grammarList;
+ var speechGrammarList$ = cxvm$.vxml.reqCollect.grammarSpeech.grammarList;
+
+ 
+ function _getMenuList$()
+ { 
+   
+    var menuList = new Array();
+
+	
+
+	this.getGrammar = function(pos,mode)
+	{
+	   var gram = undefined;
+	   
+	   if(mode == "dtmf")
+	   {
+	      if(dtmfGrammarList$.length > pos)
+    		  gram = dtmfGrammarList$[pos];
+	      
+	   }
+	   else if(speechGrammarList$.length > pos)
+	   {
+		  gram = speechGrammarList$[pos];
+	   }
+	   
+	   if(gram )
+	   { 
+	      if(gram.type == "grammar/option")
+	          return gram;
+	    }
+	   return undefined;	  
+	};
+	
+		
+    // {text:"...",mode:"dtmf or voice",utterance:"..."};
+	 
+	 var pos=0;
+	 
+	 while(true)
+	 {
+	     var dtmf = this.getGrammar(pos,"dtmf");
+	     var speech = this.getGrammar(pos,"speech");
+		 
+		 if(!dtmf   && !speech)
+		    break;
+			
+		var item = new Object();
+		if(speech)
+		{
+		   item.text = speech.rule;
+           item.mode="speech";
+           item.utterance = speech.rule; 	
+           item.id=speech.id;		   
+		}
+		
+		if(dtmf)
+		{
+		   if(!speech )		   
+		      item.text =  dtmf.rule;
+           item.mode = "dtmf";
+           item.utterance = dtmf.rule; 	
+           item.id=dtmf.id;		   
+		}
+		
+		menuList[pos] = item;
+        //menuList.push(item);
+		
+		item.no = ++pos;
+		 
+	 }
+	 
+	 return menuList;
+ }
+ 
+  function _getButtonList$()
+  {
+   return new Array();
+  }
+~%>
+
+ 
+
+
+<div data-role="page" id="vtdialog" > 
+		<div data-role="header" data-position="fixed">
+			 <h1><%=_getViewTitle$()~%> </h1>
+		</div>
+		<div id="audioControl"></div>
+		<div data-role="content">
+			<center><p><%=_getViewText$()~%> </p></center>
+		</div>	
+		
+		<div>
+           <fieldset data-role="controlgroup">
+        	  <%?
+			    var _menus = _getMenuList$();//ViewPropertyValue$("menus");
+			   //for(i in _menus) {
+			   for(var i=_menus.length-1; i >=0;i--){
+				  var m = _menus[i];~%>			
+                <label for="radio-choice-<%=m.no~%>"><%=m.text~%></label>			  
+                <input name="radio-choice" id="radio-choice-<%=m.no~%>" type="radio" value="<%=m.utterance~%>" onclick="_choiceClick$('<%=m.id~%>')">		
+		      <%? }~%>
+		   </fieldset>		  		  
+ 
+           <button data-inline="true"  onclick="_nextClick$()">다음</button>	
+ 
+		</div>
+		<div data-role="content" >
+        	<%?
+			   var _buttons = _getButtonList$();
+			   for(i in _buttons) {
+				  var b = _buttons[i]; ~%>
+  		     	  <button type="button" data-icon="arrow-l" data-iconpos="left" 
+				          onclick="_collectResult$('filled','<%=b.onclick.mode~%>','<%=b.onclick.utterance~%>')"> <%=b.text~%> </button>
+		    <%? }~%>
+		</div>
+		<div data-role="footer" data-position="fixed">
+		      <div data-role="navbar" >
+				<ul data-inset="true">				
+					<li><a  onclick="javascript:_quitClick$(true)" >종료</a></li>
+					<!--
+					<li><a  onclick="_telephoneClick$()">전화</a></li>
+					-->
+				</ul>
+			   </div>
+		</div>
+		
+
+<script>
+
+        var dialogid$="<%=cxvm$.vxml.dialogid~%>";	   	  
+        var id$="<%=cxvm$.vxml.id~%>";	   	  
+        var syncid$="<%=cxvm$.vxml.syncid~%>";	   	  
+		var _audioTranslateResult=function(success,jvalue)
+		{
+			if(success)
+			{
+			   var html= '<audio style="width: 100%;" controls>';
+			   html +=  '<source src="' + jvalue.url+'" type="audio/mpeg" preload="auto" /> ';
+			   html +=  '</audio>';
+				$('#audioControl').html(html);
+			}
+
+		}
+
+		<%?
+		  var ai = _getAudioItem$(1);
+		  if(ai ) {   
+		      var query="";
+			 if(ai.url.length > 0 )
+			 {
+			    if(ai.urltype =="audio/wav" || ai.urltype =="audio/x-wav")
+			    {
+			      //IVR2Ejs.Write("VTView.wav2mp3(ai.url,_translateResult);"); 
+			      query += "VTView.wav2mp3(";
+			      query +=  '"'+ ai.url +'"';
+			      query += ",_audioTranslateResult);";
+			    }
+			    else if(ai.urltype =="audio/mpeg") 			  
+			    {
+
+			      //IVR2Ejs.Write("VTView.local2public(ai.url,_translateResult);"); 
+			      query += "VTView.local2public(";
+			      query += '"'+ ai.url +'"';
+			      query += ",_audioTranslateResult);";
+
+			    }
+		    }
+			else  if(ai.text.length >0)
+			{
+			   var lang= promptq$.lang;
+			   if(lang.length <=0)
+			       lang = promptq$.ttslang;
+			      
+			   //if(ai.textype.indexOf("text") >=0) 
+			   {
+                  var text = ai.text.replace(/(\r\n|\n|\r)/gm, "");
+
+			     //IVR2Ejs.Write("VTView.text2mp3(ai.text,ai.texttype,_translateResult);"); 
+			     query +="VTView.text2mp3(";
+			     query += '"'+ text +'"';
+			     query += ',"'+ ai.texttype +'"';
+			     query += ',"'+ lang +'"';
+			     query += ",_audioTranslateResult);";
+
+			    }
+		    }
+
+			  if(query.length > 0 )
+			  {
+
+				 XTemplate.Write(query);
+			  }
+		 } ~%>
+
+        function _collectResult$(eventName,inputmode,utterance,grammarId) //,utterance,interpretation) 
+	    {				
+           var resMsg = new CXVMessage(CXVConst.CXV_TYPE_VXML);
+
+           resMsg.name = CXVConst.CXVVXML_COLLECT_RESULT;
+           resMsg.vxml.dialogid = dialogid$;
+           resMsg.vxml.id = id$;
+           resMsg.vxml.syncid = syncid$;
+           resMsg.vxml.resCollect = new CXVVxmlCollectResult();
+		   
+		   resMsg.vxml.resCollect.result = new CXVVxmlResultInfo(true, eventName, "","");
+           resMsg.vxml.resCollect.inputmode = inputmode;
+           resMsg.vxml.resCollect.recgrammar = grammarId;
+           resMsg.vxml.resCollect.utterance = utterance;
+           resMsg.vxml.resCollect.delimiter = "|";
+           resMsg.vxml.resCollect.interpdata ="";
+           resMsg.vxml.resCollect.interptype ="";
+           resMsg.vxml.resCollect.confidence = 1.0;
+		   
+			
+		   _emit_cxvm$(resMsg);	
+        }
+
+		
+		
+        function _getSelectedRadio$()
+        {      
+           var radioChoices = document.getElementsByName('radio-choice');
+           if(radioChoices != null)
+           {
+               var i;
+               for(i=0;i<radioChoices.length;i++)
+               {
+                   if(radioChoices[i].checked == true)
+                   {  
+			          return radioChoices[i];
+                   }
+               }            
+           }
+
+            return undefined;      
+        }
+		
+		var   grammarId$="";
+		function _nextClick$()
+		{
+		  var selected = _getSelectedRadio$();
+		  if(selected)
+		  {
+			 _collectResult$(CXVConst.CXVVXML_COLLECT_RESULT_UTTERANCE,'dtmf',selected.value,grammarId$);
+		  }
+		  else
+		  {
+		     alert('선택해주세요!');
+		  }
+		  
+		}
+		function _choiceClick$(gid)
+		{
+		    grammarId$=  gid;
+		}
+	
+	    function _eventReceiver$(type,cxvm)
+	    {
+		    if(cxvm.name == CXVConst.CXVVXML_STOP)
+               _collectResult$(CXVConst.CXVVXML_COLLECT_RESULT_NOINPUT,"","",""); //,utterance,interpretation) 
+			
+	    }
+	    _setEventRelay$(_eventReceiver$); 
+
+</script>
+		
+</div>
+	
