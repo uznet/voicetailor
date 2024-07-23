@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.w3.org/2001/vxml 
+   http://www.w3.org/TR/voicexml20/vxml.xsd" xml:lang="ko-KR">
+<form id="get_starting_and_ending_cities">
+    <grammar version="1.0" mode="voice" root="citys">
+         <rule id="citys">
+                   <one-of>
+                    <item>한국</item>
+                    <item>중국</item>
+                    <item>미국</item>
+                    <item>일본</item>
+                   </one-of>
+                 </rule>
+	 </grammar>
+	 <property name="inputmodes" value="voice" />  
+
+     <field name="start_city">
+       <prompt>
+		 출발 도시명를 말씀하세요
+		</prompt>
+     </field>
+
+     <field name="end_city">
+       <prompt>
+		 도착 도시명를 말씀하세요
+		</prompt>
+     </field>
+   
+     <nomatch> 잘못된 입력입니다. </nomatch> 
+     <noinput> 입력이 없습니다.  </noinput> 
+     
+    <filled mode="all" namelist="start_city end_city">
+      <if cond="start_city == end_city">
+        <prompt xml:lang="en-US">
+           You can't fly from and to the same city.
+        </prompt>
+        <clear/>
+      <else/>
+        <prompt xml:lang="en-US">
+          Good choice
+        </prompt>
+         
+      </if>
+     </filled>
+</form>
+</vxml>
