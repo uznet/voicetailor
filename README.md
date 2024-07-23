@@ -13,4 +13,4 @@
 - Web 채널은  Voice 채널과  시나리오 및 콘텐츠 를  서로 공유 하며 상호 작용 할수 있습니다.
 
 ### Getting Started
-[voicetailor.com](http://www.voicetailor.com/ivr2/html/getstarted.html)  에서  Voicetailor를 체험 할 수 있습니다.
+- [voicetailor.com](http://www.voicetailor.com/ivr2/html/getstarted.html)  에서  Voicetailor를 체험 할 수 있습니다.
