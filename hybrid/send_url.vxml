@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+
+<vxml version="2.1"  xml:lang="ko-KR">
+
+    <script>
+     <![CDATA[	
+	 
+	   function _makeSms$(url)
+       { 
+		  var text = 'url 를 클릭해주세요.' +url; 
+          return text;
+		  
+       }
+	   
+       
+
+       function _makeInviteUrl$(httpdConfig,caller,callee,hybrid)
+       {
+		   
+		   var protocol = httpdConfig.ssl.enabled ? "https":"http"; 
+		   var url= protocol+"://"+httpdConfig.host+":"+httpdConfig.port;
+		   url += "?caller="+caller;
+		   url += "&hybrid="+hybrid;
+		   
+           //console.log("inviteUrl="+inviteUrl);
+		   return url;
+
+	   }
+
+
+	 ]]>
+	</script>   
+
+    <form>
+      <var name="local" expr="''" />
+      <var name="remote" expr="''" />
+      <var name="hybrid" expr="''" />
+      <var name="inviteUrl" expr="''" />
+	  	  
+	  <block> 	  	
+        <data name="httpdConfig" src="https://localhost:11047/iwr/config/select"/> 	  
+	    <log label="httpdConfig" expr="JSON.stringify(httpdConfig)" />
+	
+        <assign name="inviteUrl" expr="_makeInviteUrl$(httpdConfig.value,remote,local,hybrid)" />
+	    <log label="local" expr="local" />
+	    <log label="remote" expr="remote" />
+	    <log label="hybrid" expr="hybrid" />
+	    <log label="inviteUrl" expr="inviteUrl" />
+
+    
+	    <send async="true" 
+                 target="https://localhost:11047/demo/sendsms"
+                 namelist="to=%remote% text=%_makeSms$(inviteUrl)%" />
+                 
+	     <return namelist="result=%'ok'%" />		
+
+
+	  </block>
+      
+      
+	  <catch event="error.badfetch">
+	    <log label="send" expr="'error.badfetch'" />
+	    <audio>URL 보내기실패. URL Receiver 를 활성화 한후 다시 시도해주세요 .</audio>
+	
+        <return namelist="result=%'failed'%" />			   
+      </catch>		
+	  	   
+	</form>
+	
+
+</vxml>

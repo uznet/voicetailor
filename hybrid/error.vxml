@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+
+
+<vxml version="2.1"  xml:lang="ko-KR">
+ 
+   <form id="verification_failed">
+       <block>IVR2 데모에 참여 하신후 이용바랍니다. 감사합니다.</block>
+   </form>
+   <form id="demotype">
+       <block>원하시는 데모 유형을 선택하세요.감사합니다.</block>
+   </form>
+
+</vxml>

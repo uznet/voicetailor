@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1"  xml:lang="ko-KR" >
+
+
+    <link dtmf="*" next="card_main.vxml"/>
+	
+	
+    <form id="cardLimit">
+	   <block>
+	      <prompt>이용한도조회서비스입니다</prompt>
+	   </block>
+	   <field name="cardNumber" type="digits?minlength=4;maxlength=14">
+         <property name="inputmodes" value="dtmf voice"/>
+         <property name="interdigittimeout" value="5s"/>
+		 <property name="termchar" value="#*" />
+	     <prompt timeout="5s" bargein="true" hybrid:control="hybridControl$.field()">
+ 		  <audio>고객님의의 카드번호입력후 우믈정(#)을 눌러주세요.</audio> 
+         </prompt>  
+
+
+         <noinput> <prompt hybrid:control="hybridControl$.noinput()" >입력이 없습니다.</prompt><reprompt/></noinput>		
+	     <nomatch> <prompt hybrid:control="hybridControl$.nomatch()" >잘못된 입력입니다.</prompt><reprompt/></nomatch>		
+         <noinput count="3"> <goto nextitem="terminate"/> </noinput>
+         <nomatch count="3"> <goto nextitem="terminate"/> </nomatch>
+
+        </field>
+
+
+		<field name="secNumber" type="digits?length=4">
+         <property name="inputmodes" value="dtmf voice"/>
+         <property name="interdigittimeout" value="5s"/>
+	     <prompt timeout="5s" bargein="true"  hybrid:control="hybridControl$.field()">
+		  <audio>고객님의 카드비밀번호 4자리를 눌러주십시요</audio> 
+         </prompt>  
+         <filled> 
+            <prompt> 고객님께서 월 한도금액은 1,500,000 원입니다.</prompt> 	 
+    		<goto next="card_main.vxml"/>
+		 </filled>
+		 
+         <noinput> <prompt hybrid:control="hybridControl$.noinput()" >입력이 없습니다.</prompt><reprompt/></noinput>		
+	     <nomatch> <prompt hybrid:control="hybridControl$.nomatch()" >잘못된 입력입니다.</prompt><reprompt/></nomatch>		
+         <noinput count="3"> <goto next="#terminate"/> </noinput>
+         <nomatch count="3"> <goto next="#terminate"/> </nomatch>
+		  
+        </field>
+
+ 	    
+	
+    </form>
+	<form id="terminate">
+	    <block name="terminate">
+		   <prompt>죄송합니다. 입력오류 입니다.사용방법을 확인하시고 다시이용해주시기바랍니다. 항상우리나라카드를 이용해주셔서 감사합니다</prompt>
+		  <exit/>            		   
+		</block>
+	</form>
+	
+</vxml>

@@ -1,0 +1,106 @@
+{
+	"name": "hybrid",
+	"vxml": [
+		{
+			"file": "card_main.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "card_report_loss.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "card_request.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "card_type.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "error.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "hybrid.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "inquiry_card_limit.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "inquiry_payment.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "root.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "send_url.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "transfer.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		}
+	],
+	"ccxml": [
+		
+	],
+	"grxml": [
+		
+	],
+	"text": [
+		
+	],
+	"ssml": [
+		
+	],
+	"wav": [
+		{
+			"file": "input_error.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		}
+	],
+	"vtejs": [
+		
+	],
+	"js": [
+		
+	],
+	"vtwsp": [
+		
+	],
+	"any": [
+		
+	],
+	"vtgroup": [
+		
+	]
+}

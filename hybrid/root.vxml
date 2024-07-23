@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+
+<vxml version="2.1"   xml:lang="ko-KR">
+	<script>
+     <![CDATA[	
+	 
+	 
+	     
+	   if(typeof(hybridControl$) != 'object')
+	   {
+	       hybridControl$={};
+	       
+	       var  _findChannelByTrunkName=function(trunkName)
+	       {
+	           var  pos=-1,mc ;
+               
+
+               while((mc = session.hybrid.findChannelByPos(++pos)))
+               {                            
+                  if(mc.info.trunk == trunkName)
+                     return mc;              
+               }           
+               return null;	   
+	        }
+	   
+	   
+	        hybridControl$.applyAction=function(action)
+            { 
+
+               var webChannel = _findChannelByTrunkName("webbound");
+               var voiceChannel = _findChannelByTrunkName("inbound");
+               if(webChannel != null)
+               {
+                   if(action == 'play')
+                   {
+                      if(voiceChannel != null)
+                      {                          
+                         webChannel.interaction.mode = "";
+                         webChannel.interaction.extra.mp3enabled = false;                    
+                         webChannel.interaction.extra.template = undefined;                 
+                         return ;                        
+                      }
+                   }
+                         
+                   webChannel.interaction.mode = "sendrecv";
+                   webChannel.interaction.extra.mp3enabled = voiceChannel != null ? false : true;                    
+                   webChannel.interaction.extra.template = undefined;                                                                             
+               }
+            }
+
+	        hybridControl$.nomatch=function()
+            { 
+               
+                 this.applyAction("play");
+           
+            }
+	        hybridControl$.noinput=function()
+	        {	   
+                 this.applyAction("play");
+	        }
+	        
+	        
+	        hybridControl$.menu=function()
+	        {	   
+	             this.applyAction('collect');	       
+	        }
+	        hybridControl$.field=function()
+	        {	   
+	             this.applyAction('collect');	       
+	        }
+	        hybridControl$.prompt=function()
+	        {	   
+	             this.applyAction('play');	       
+	        }
+	        
+	        
+
+         }    
+
+	 ]]>
+	</script>   
+</vxml>
