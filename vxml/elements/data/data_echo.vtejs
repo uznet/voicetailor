@@ -1,8 +1,0 @@
-<%? 
-    var jrsp = {};    
-    
-    jrsp.taskname = VTRequest.getValue("taskname");
-    jrsp.taskstate =VTRequest.getValue('taskstate');
-    jrsp.ccnum=VTRequest.getValue('ccnum');    
-    VTEjs.appendData(JSON.stringify(jrsp));
-~%>  
