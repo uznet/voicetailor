@@ -1,7 +1,7 @@
 ### Overview
--Voicetailor 는  Interactive Voice Dialog  애플리케이션을 개발하고 테스트할 수 있는 플랫폼 입니다.
--Voicetailor 는 사람과 컴퓨터 간의 대화형 음성 다이얼 로그를  지정하기 위한 W3C의  VoiceXML  를 기반으로 하며 , 이를 통해 시각적 애플리케이션을 위한 HTML과 유사한 방식으로 음성 애플리케이션을 개발하고 배포할 수 있습니다.
--표준 HTTP/웹 프로토콜을 기반으로 하는 Voicetailor  플랫폼을 사용하면 거의 모든 프로그램 언어로 대화형 음성 애플리케이션을 직접 개발할 수 있습니다.
+- Voicetailor 는  Interactive Voice Dialog  애플리케이션을 개발하고 테스트할 수 있는 플랫폼 입니다.
+- Voicetailor 는 사람과 컴퓨터 간의 대화형 음성 다이얼 로그를  지정하기 위한 W3C의  VoiceXML  를 기반으로 하며 , 이를 통해 시각적 애플리케이션을 위한 HTML과 유사한 방식으로 음성 애플리케이션을 개발하고 배포할 수 있습니다.
+- 표준 HTTP/웹 프로토콜을 기반으로 하는 Voicetailor  플랫폼을 사용하면 거의 모든 프로그램 언어로 대화형 음성 애플리케이션을 직접 개발할 수 있습니다.
 
 ### Interactive Voice/Telephony Applications
 1. W3C VoiceXML 표준을 기반으로 하는 Voicetailor 는 모든 전화 단말기에서 웹 및 엔터프라이즈 시스템에 대한 대화형 음성 액세스를 가능하게 합니다.
