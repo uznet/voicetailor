@@ -1,0 +1,12 @@
+
+var result=VTEjs.renderFile(VTRequest,"success.vtejs");
+
+VTConsole.log("VTEjs.result="+result);
+
+if(result)
+  result=VTResponse.send(VTEjs.text,"application/xml+voicexml");
+else    
+  result=VTResponse.send(VTEjs.error.msg,"text/plain");
+  
+VTConsole.log("VTResponse.sendResult="+JSON.stringify(result));
+

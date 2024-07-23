@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1">
+   <var name="hello" expr="'안녕하세요'"/>
+   <var name="bye" expr="'안녕히가세요'"/>
+
+   <catch  event="intercept">
+      급한일 먼저 처리하겠습니다.
+      <throw event="done" />
+   </catch>
+   <catch  event="done">
+      급한일 먼저 처리 하였습니다.
+      종료합니다.
+      <exit/>
+   </catch>
+</vxml>

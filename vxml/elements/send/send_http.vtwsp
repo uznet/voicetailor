@@ -1,0 +1,13 @@
+
+var method=VTRequest.getMethod();
+
+VTConsole.log("mthod="+method);
+
+if(method == 'POST'){
+    var body=VTRequest.getPostValue();
+    VTConsole.log("post.body="+JSON.stringify(body));
+    
+}
+VTResponse.sendStatus(200);
+  
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1">
+<form>
+	<subdialog name="result" src="#getEvent">
+	   <nomatch>
+	      입력 실패 
+	      <disconnect/>
+	   </nomatch>
+		<param name="x" expr="10"/>
+	</subdialog>
+	<catch event="done" >
+	   계산결과값은 <value expr="_message" /> 입니다.
+	</catch>
+</form>
+
+<form id="getEvent">
+	<var name="x"/>
+	<var name="result"/>
+
+    <field name="input" type="digits">
+	    <property name="inputmodes" value="dtmf" />
+		<prompt>
+			임의의 숫자를 입력하시고 우물정을 누르세요.
+		</prompt>
+         <filled>
+			<assign name="result" expr="x*0.3+input*0.7"/>
+			<return event="done" messageexpr="result.toString()" />
+         </filled>
+         <noinput>
+           입력이 없습니다.
+           <reprompt/>
+         </noinput>
+	</field>
+</form>
+</vxml>
+ 
+
