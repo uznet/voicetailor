@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1" application="root.vxml" xml:lang="ko-KR">
+  <property name="hybrid.enable" value="true"/>
+	<property name="externalevents.enable" value="false"/> 
+ 	<property name="externalevents.queue" value="false"/> 
+
+    <menu id="intro">
+        <property name="inputmodes" value="dtmf voice"/>
+        <property name="interdigittimeout" value="1s"/>
+        <property name="termchar" value="#"/>
+
+	    <prompt timeout="3s" bargein="true">		         
+		    <audio src="intro.txt.wav">
+           국가명을 말씀하시거나. 대한민국은 1번,미국은 2번,독일은 3번,일본은 4번,중국은 5번을 누르세요.
+		    </audio> 
+       </prompt>  
+		
+       <choice dtmf="1" next="korean.vxml">대한민국</choice>
+       <choice dtmf="2" next="english.vxml">미국</choice>
+       <choice dtmf="3" next="german.vxml">독일</choice>
+       <choice dtmf="4" next="japanese.vxml">일본</choice>
+       <choice dtmf="5" next="chinese.vxml">중국</choice>
+		
+       <noinput>         
+           <audio src="noinput.wav">there is no input.</audio>
+          <reprompt/>
+       </noinput>		
+       <nomatch> 
+		      <audio src="wrong.wav">You pressed the wrong number.</audio>
+         <reprompt/>		  
+       </nomatch>
+
+       <noinput count="3"> <goto next="#terminate" /> </noinput>         
+       <nomatch count="3"> <goto next="#terminate" /> </nomatch>         
+
+    </menu>
+    <form id="terminate">
+	      <block>
+          <audio src="terminate.wav">
+		         sorry. The number of input errors allowed is limited to 3. Thank you for using it
+           </audio>  
+		   <exit/>            		   
+		  </block>
+	  </form>
+</vxml>

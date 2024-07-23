@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1" xml:lang="en-US">
+
+     <form>
+       <block>
+           <audio src="english.wav"> 
+             Korea uses its own language and uses Hangul, a unique script created by King Sejong the Great (1397-1450) of the Joseon Dynasty. 
+             Hangul has been recognized internationally as an excellent alphabet because it is easy to learn and use. In particular, 
+             it is scientifically outstanding in that it can record a large number of speech sounds by combining 24 letters. 
+           </audio>
+           <goto next="intro.vxml" />			           
+      </block>
+ 	 </form>
+
+</vxml>

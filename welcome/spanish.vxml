@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+  
+<vxml version="2.1" xml:lang="es-ES">
+
+     <form>
+        <block>
+           <audio src="spanish.wav">
+            Corea utiliza su propio idioma y utiliza Hangul, una escritura única creada por el rey Sejong el Grande (1397-1450) de la dinastía Joseon. 
+            Hangul ha sido reconocido internacionalmente como un alfabeto excelente porque es fácil de aprender y utilizar. En particular, 
+            destaca científicamente porque puede grabar una gran cantidad de sonidos del habla combinando 24 letras 
+            </audio>
+         <goto next="intro.vxml" />			
+        </block> 
+          
+     </form>
+</vxml>

@@ -1,0 +1,153 @@
+{
+	"name": "welcome",
+	"vxml": [
+		{
+			"file": "chinese.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "english.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "german.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "welcome.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "japanese.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "korean.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "root.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "spanish.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		}
+	],
+	"ccxml": [
+		
+	],
+	"grxml": [
+		
+	],
+	"text": [
+		{
+			"file": "intro.txt",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		}
+	],
+	"ssml": [
+		
+	],
+	"wav": [
+		{
+			"file": "chinese.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "english.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "german.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "intro.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "japanese.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "korean.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "noinput.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "spanish.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "terminate.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "wrong.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "intro.txt.wav",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		}
+	],
+	"vtejs": [
+		
+	],
+	"js": [
+		
+	],
+	"vtwsp": [
+		
+	],
+	"any": [
+		
+	],
+	"vtgroup": [
+		
+	]
+}

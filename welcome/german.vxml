@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+  
+<vxml version="2.1"   xml:lang="de-DE">
+
+     <form>
+       <block>
+            <audio src="german.wav"> 
+             Korea verwendet seine eigene Sprache und Hangul, eine einzigartige Schrift, die von König Sejong dem Großen (1397-1450) aus der Joseon-Dynastie geschaffen wurde. 
+             Hangul gilt international als hervorragendes Alphabet, da es leicht zu erlernen und zu verwenden ist. Wissenschaftlich herausragend ist es insbesondere dadurch, 
+             dass es durch die Kombination von 24 Buchstaben eine große Anzahl von Sprachlauten aufzeichnen kann.
+            </audio>
+         <goto next="intro.vxml" />			
+      </block>
+	 </form>
+
+</vxml>

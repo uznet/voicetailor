@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1"   xml:lang="ja-JP">
+
+     <form>
+       <block>
+         <audio src="japanese.wav"> 
+          韓国は固有の言語を使用し、文字は朝鮮王朝世宗大王（１３９７～１４５０）が創製した固有文字であるハングルを使用する。 ハングルは簡単に学び、書くことができるという点で世界的に優れた文字として認められた。 特に24の字母を組み合わせて非常に多くの声を記録できるという点で科学的に優れている。
+         </audio>
+         <goto next="intro.vxml" />			
+ 
+      </block>
+ 	 </form>
+
+
+</vxml>
