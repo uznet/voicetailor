@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1">
+	<menu>
+	  <property name="inputmodes" value="voice"/>
+
+		<prompt>
+		  어세오세요. <enumerate> <value expr="_prompt"/>,  </enumerate> 중 말씀하세요 .
+		</prompt>
+		<choice next="#pen">볼펜</choice>
+		<choice next="#pencil">연필</choice>
+	</menu>
+	<form id="pen">
+		<block>
+			<audio>볼펜은  1000원입니다.</audio>
+		</block>
+	</form>
+	<form id="pencil">
+		<block>
+			<audio>연필은 500원입니다.</audio>
+		</block>
+	</form>
+</vxml>

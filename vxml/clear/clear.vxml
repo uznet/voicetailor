@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1">
+<form>
+	<field name="field_1">
+	    <property name="inputmodes" value="dtmf"/>		
+	    <property name="termchar" value=""/>		
+		<prompt>
+		  clear 테스트 입니다. 원하는 입력값을 넣어주세요
+		</prompt>
+        <grammar version="1.0" mode="dtmf" root="digits">
+                 <rule id="digits">
+                   <one-of>
+                    <item>1</item>
+                    <item>2</item>
+                    <item>3</item>
+                   </one-of>
+                 </rule>
+	     </grammar>
+	     
+	     <filled>
+		    <audio>필드 값은 <value expr="dialog.field_1"/> 입니다</audio>
+		    <clear namelist="field_1"/>	         
+	     </filled> 
+	</field>
+</form>
+</vxml>
+

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<vxml version="2.1">
+<form>
+   <var name="sorry" expr="'미안합니다.'"/>
+   <block>
+      <audio src="sorry.wav" >
+        <value expr="sorry"/>
+      </audio>
+   </block>
+</form>
+</vxml>
