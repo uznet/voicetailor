@@ -1,0 +1,186 @@
+ <%? 
+  var cxvm$   = VTTemplate.Args.cxvm;
+  var mmi$    = cxvm$.vxml.reqPlay.promptq.mmi;
+  var promptq$ =  cxvm$.vxml.reqPlay.promptq;
+  var medias$   = cxvm$.vxml.reqPlay.promptq.medias;
+  console.log(JSON.stringify(cxvm$));
+ function _getAudioItem$(pos)
+ { 
+     for(i in medias$.mediaList){
+	     if((--pos) == 0)
+		    return medias$.mediaList[i];
+	 }
+	 return null;	 
+ }
+  
+ function _getViewExtraValue$(name)
+ {
+    var  extra=  mmi$.interaction.extra;//_getViewPropertyValue$("content");
+	if(extra)
+	{
+        // first, lookup promptq
+        //console.log("_getViewPropertyValue$("+name+")");
+        for (i in extra)
+        {
+	      if(i == name)
+		  {
+		    return extra[i];
+		 }
+	   }
+    }	
+    //console.log("_getViewPropertyValue$("+name+")="+value);
+	
+	return null;
+ }
+ function _getViewTitle$()
+ {
+    var value = _getViewExtraValue$("title");
+	if(typeof(value) != "string" )
+	   value =  "";
+	return value.trim();   	
+ }
+
+ function _getViewText$()
+ {
+    var value = _getViewExtraValue$("text");
+	if(typeof(value) != "string" )
+	{
+	   var ai = _getAudioItem$(1);
+	   if(ai )
+	     value = ai.text;
+	   else 
+         value="???";	   
+	}
+	return value.trim();   	
+ }
+
+ function _getViewPromptBargein$()
+ {
+     return true;
+}
+
+ ~%>
+ 
+
+
+   <div data-role="page" id="vtdialog" >
+    <div data-role="header" data-position="fixed">
+	  <h1><%=_getViewTitle$()~%> </h1>
+	</div>
+	
+	<div id="audioControl"></div>	
+
+	  
+	<div data-role="content">
+		<p><%=_getViewText$()~%> </p>
+	</div>
+	  
+	<div data-role="content">
+	   <%? if(_getViewPromptBargein$() == true) {~%>
+			   <a data-role="button" onclick="_playResult$('interrupt')">다음</a>
+	   <%? } ~%>
+	</div>
+	      
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar" >
+		    <ul data-inset="true">
+				<li><a  onclick="javascript:_quitClick$(true)" >종료</a></li>
+			</ul>
+		</div>
+	</div>
+		
+	<script>
+       var dialogid$ ="<%=cxvm$.vxml.dialogid~%>";	   	  
+       var id$ ="<%=cxvm$.vxml.id~%>";	   	  
+       var syncid$="<%=cxvm$.vxml.syncid~%>";	   	  
+	    
+		var _audioTranslateResult=function(success,jvalue)
+		{
+			if(success)
+			{
+			   var html= '<audio style="width: 100%;" controls>';
+			   html +=  '<source src="' + jvalue.url+'" type="audio/mpeg" preload="auto" /> ';
+			   html +=  '</audio>';
+				$('#audioControl').html(html);
+			}
+
+		}
+
+		<%?
+		  var ai = _getAudioItem$(1);
+		  if(ai ) {   
+			 var query="";
+			
+			 if(ai.url.length > 0 )
+			 {
+			    if(ai.urltype =="audio/wav" || ai.urltype =="audio/x-wav")
+			    {
+			      //IVR2Ejs.Write("VTView.wav2mp3(ai.url,_translateResult);"); 
+			      query += "VTView.wav2mp3(";
+			      query +=  '"'+ ai.url +'"';
+			      query += ",_audioTranslateResult);";
+			    }
+			    else if(ai.urltype =="audio/mpeg") 			  
+			    {
+
+			      //IVR2Ejs.Write("VTView.local2public(ai.url,_translateResult);"); 
+			      query += "VTView.local2public(";
+			      query += '"'+ ai.url +'"';
+			      query += ",_audioTranslateResult);";
+
+			    }
+		    }
+			else  if(ai.text.length >0)
+			{
+			   var lang= promptq$.lang;
+			   if(lang.length <=0)
+			       lang = promptq$.ttslang;
+			      
+			   //if(ai.textype.indexOf("text") >=0) 
+			   {
+				   var text = ai.text.replace(/(\r\n|\n|\r)/gm, "");
+
+			     //IVR2Ejs.Write("VTView.text2mp3(ai.text,ai.texttype,_translateResult);"); 
+			     query +="VTView.text2mp3(";
+			     query += '"'+ text +'"';
+			     query += ',"'+ ai.texttype +'"';
+			     query += ',"'+ lang +'"';
+			     query += ",_audioTranslateResult);";
+
+			    }
+		    }
+
+			  if(query.length > 0 )
+			  {
+
+				 VTTemplate.Write(query);
+			  }
+		 } ~%>
+		
+        function _playResult$(reason) 
+	    {
+           var result = new CXVVxmlResultInfo(true, reason, "","");
+           var resMsg = new CXVMessage(CXVConst.CXV_TYPE_VXML);//playResult);
+           resMsg.name = CXVConst.CXVVXML_PLAY_RESULT;
+           resMsg.vxml.dialogid = dialogid$;
+           resMsg.vxml.id = id$;
+           resMsg.vxml.syncid = syncid$;
+           resMsg.vxml.resPlay = new CXVVxmlPlayResult(result);
+			
+		   _emit_cxvm$(resMsg);	
+	    }
+		function _eventReceiver$(type,cxvm)
+	    {
+			if(cxvm.name == CXVConst.CXVVXML_STOP)
+			{
+				// 
+				_playResult$(CXVConst.CXVVXML_PLAY_RESULT_COMPLETE);
+			}
+	    }
+	    _setEventDispatch$(_eventReceiver$); 
+
+     </script>
+
+  </div>	
+	
+

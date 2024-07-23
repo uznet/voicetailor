@@ -1,0 +1,12 @@
+
+var result=VTEjs.renderFile(VTRequest,"view/view_start.vtejs");
+
+VTConsole.log("VTEjs.result="+result);
+
+if(result)
+  result=VTResponse.send(VTEjs.text,"text/html");
+else    
+  result=VTResponse.send(VTEjs.error.msg,"text/plain");
+  
+VTConsole.log("VTResponse.sendResult="+JSON.stringify(result));
+
