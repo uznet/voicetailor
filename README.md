@@ -11,6 +11,11 @@
 ### Hybrid Interaction Between Channels
 - Voicetailor는 Web 채널에서   VoiceXML  문서를 실시간으로  렌더링 할수 있도록 합니다.
 - Web 채널은  Voice 채널과  시나리오 및 콘텐츠 를  서로 공유 하며 상호 작용 할수 있습니다.
-
+### TTS(Text-To_Speech)
+- Voicetailor  는 TTS Connecter  통해 multi-vendor TTS(Text-To-Speech) 엔진을 실시간으로 실행할수 있습니다.  
+- VoiceXML 문서 에서 Language(언어) 및 gender(남성,여성) 그리고 speaker(화자)를 실시간으로 선택할수 있기때문에  보다 향상된 VUI(Voice User Interface)를 개발할 수 있습니다.
+### STT(Speech-To-Text)
+- Voicetailor  는 STT 커넥터 를 통해 실시간으로 multi-vendor STT(Speech-to-Text) 엔진을 실행합니다  
+- VoiceXML 문서 에서 Language(언어) 실시간으로 선택할수 있기 때문에  다국어가 지원되는 VUI(Voice User Interface)를 쉽게 개발할 수 있습니다.
 ### Getting Started
 - [voicetailor.com](http://www.voicetailor.com/ivr2/html/getstarted.html)  에서  Voicetailor를 체험 할 수 있습니다.
