@@ -1,0 +1,59 @@
+{
+	"name": "ccxml",
+	"vxml": [
+		
+	],
+	"ccxml": [
+		{
+			"file": "incall_main.ccxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "mode_hybrid.ccxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "mode_normal.ccxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "outcall_main.ccxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		}
+	],
+	"grxml": [
+		
+	],
+	"text": [
+		
+	],
+	"ssml": [
+		
+	],
+	"wav": [
+		
+	],
+	"vtejs": [
+		
+	],
+	"js": [
+		
+	],
+	"vtwsp": [
+		
+	],
+	"any": [
+		
+	],
+	"vtgroup": [
+		
+	]
+}

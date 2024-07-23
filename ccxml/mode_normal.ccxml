@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ccxml PUBLIC "-//W3C//DTD CCXML 1.0//EN" 
+  "http://www.w3.org/TR/2010/CR-ccxml-20100401/ccxml.dtd">
+
+
+
+
+
+<ccxml version="1.0">
+
+    <var name="inConnectionId" />
+    <var name="dialogId" />
+    <var name="dialogStarted" expr="false"  />
+    
+  <!--           Test.ccxml=====  -->
+  
+  
+    <eventprocessor >
+           
+        <transition  event="ccxml.loaded" >              
+             <log label="'normal:ccxml.loaded.event$'" expr= "JSON.stringify(event$)" />              
+             <log label="'normal:ccxml.loaded.application'" expr= "JSON.stringify(application)" />              
+             
+             <accept connectionid="application.connectionid" />  
+             
+        </transition>
+
+        <transition  state="start" event="connection.alerting" >
+            <log label="'connection.alerting'" expr= "JSON.stringify(event$)" />
+             <accept  />  
+                  
+        </transition>
+        
+
+
+        <transition event="connection.connected">
+            <log label="'connections.sip'" expr= "application.findSipConnectionId()" />
+            <assign  name="inConnectionId"  expr="event$.connectionid" />
+        
+			   <dialogstart 
+                    src = "session.values.startup.url.voicexml"    
+                    dialogid="dialogId"    
+                    connectionid="event$.connectionid"
+                    mediadirection="'both'" 
+                    parameters=""/>	
+        </transition>
+
+
+        <transition event="connection.disconnected">
+               <exit/>
+        </transition>
+
+        <transition event="connection.accept.failed" >           
+            <log label="'connection.accept.failed'" expr= "JSON.stringify(event$)" />
+           <exit/>
+        </transition>
+
+        <transition event="connection.error" >           
+                <exit/>
+        </transition>
+           <transition event="error.connection.wrongstate" >             
+             <log label= "'error.connection.wrongstate:reason='" expr= "event$.reason" />
+             <log label= "'error.connection.wrongstate:tagname='" expr= "event$.tagname" />
+		   
+             <exit/>
+           </transition>
+
+		<!-- only outgoing result--> 
+        <transition event="connection.failed" >             		   
+             <exit/>
+        </transition>
+
+        <transition event="connection.redirected" >           
+		    <send name    = "'dialog.transfer.complete'"  
+                    target  = "dialogId" 
+                    targettype = "'dialog'" 
+                    namelist   = "result=%'connection.disconnect.transfer'%" />		  
+        </transition>
+        
+        <transition event="connection.redirect.failed" >           
+		       <log label="event$.name" expr= "JSON.stringify(event$)" />			   
+		       <send name    = "'dialog.transfer.complete'"  
+                    target  = "dialogId" 
+                    targettype = "'dialog'" 
+                    namelist   = "result=%event$.reason%" />		             
+        </transition>
+
+    <!-- =============================DIALOG ============================= -->
+           <transition event="dialog.started" >
+            <log label="'dialog'" expr= "event$.name" />
+            <assign name="dialogStarted" expr="true" />
+                           
+           </transition>
+
+		 
+           <transition event="error.dialog.notstarted">
+               <log label="'dialog'" expr= "event$.name" />
+               <exit expr = "event$.name" />
+
+           </transition>
+
+     	   <transition event="error.dialog">
+               <log label="'dialog'" expr= "event$.name" />
+               <exit expr = "event$.reason" />
+
+           </transition>
+
+           <transition event="dialog.exit">
+               <log label="'dialog'" expr= "event$.name" />
+               <log label="'dialog.exit.values'" expr= "JSON.stringify(event$)" />
+               <assign name="dialogStarted" expr="false" />
+               <exit expr = "JSON.stringify(event$.values)" />
+           </transition>
+
+           <transition event="dialog.disconnect">
+               <log label="'dialog'" expr= "event$.name" />            
+               <log label="'dialog.disconnect.values'" expr= "JSON.stringify(event$)" />
+
+               <disconnect connectionid="inConnectionId" />
+
+           </transition>
+
+
+           <transition event="dialog.transfer">
+               <log label="'dialog'" expr= "event$.name" />
+               <log label="'dialog.transfer'" expr= "JSON.stringify(event$)" />               
+               <log label="'dialog.transfer.TYPE'" expr= "event$.type" />
+               <log label="'dialog.transfer.URI'" expr= "event$.uri" />
+               <redirect  connectionid="inConnectionId" dest="event$.uri" />
+           </transition>
+
+
+          
+     </eventprocessor>
+</ccxml>
