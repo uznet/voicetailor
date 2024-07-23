@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1" xml:lang="en-US"> 
+<menu dtmf="true">
+  <prompt>
+    Welcome home.
+    <enumerate>
+     For <value expr="_prompt"/>, press <value expr="_dtmf"/>.
+   </enumerate>
+   </prompt>
+   <choice event="sports">sports </choice>
+   <choice event="weather">weather</choice>
+   <choice event="news" message="CNN">news</choice>
+
+   <noinput> there is no input <reprompt/> </noinput>
+   <nomatch> there is nomatch <reprompt/> </nomatch>
+   <catch event="noinput nomatch"  count="3"> will be disconnected.<disconnect/> </catch>
+
+</menu>
+<catch event="sports">You choose baseball <reprompt/> </catch>
+<catch event="weather"> You choose weather <reprompt/> </catch>
+<catch event="news"> <audio>The News is <value expr="_message"/></audio> </catch>
+
+</vxml>

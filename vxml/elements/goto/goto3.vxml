@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+
+<vxml version="2.1">
+   <form id="form1">
+      <block>
+         In dialog form1 of document goto3.vxml
+         <goto next="goto1.vxml#form2"/>
+      </block>
+   </form>
+</vxml>

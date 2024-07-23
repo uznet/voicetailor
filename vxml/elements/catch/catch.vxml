@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1" xml:lang="en-US">
+
+<form id="launch_missiles">
+  <field name="user_id" type="digits?length=4"> 
+    <prompt>What is your username</prompt> 
+    <!--
+    <filled>
+      <audio> the value is <value expr="user_id"/> </audio>
+    </filled>
+    -->
+  </field>
+  
+  <field name="password"> 
+    <prompt>What is the code word?</prompt> 
+    <grammar version="1.0" root="root">
+     <rule id="root" scope="public">rutabaga</rule>
+    </grammar>
+   <help>It is the name of an obscure vegetable.</help> 
+  </field> 
+   <catch event="nomatch noinput" > 
+     <prompt>Security violation!</prompt> 
+   </catch> 
+
+   <catch event="nomatch noinput" count="3" > 
+     <prompt>Too many Security violation!</prompt> 
+     <exit/>
+   </catch> 
+
+</form>
+</vxml>
