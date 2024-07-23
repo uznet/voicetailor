@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1">
+  <form>
+  	<field name="input">
+  	   
+  	   <grammar version="1.0" mode="dtmf" root="digits">
+                 <rule id="digits">
+                   <one-of>
+                    <item>1</item>
+                    <item>2</item>
+                    <item>3</item>
+                    <item>4</item>
+                    <item>5</item>
+                   </one-of>
+                 </rule>
+	     </grammar>
+		<prompt>
+			숫자값을 입력 하세요
+		</prompt>
+		<prompt count="2">
+			다시  입력 하세요
+		</prompt>
+		<filled>
+		   <audio>입력값은 <value expr="input" /> 입니다.종료하겠습니다.</audio>
+		   <exit/>
+		</filled>
+		<nomatch>
+			 잘못된 입력 입니다.
+			<throw event="help"/>
+		</nomatch>
+  </field>
+</form>
+ <help>
+	일 부터 오 사이의  값을 입력하세요
+	<reprompt/>
+ </help>
+</vxml>

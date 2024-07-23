@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1">
+  <meta http-equiv="Expires" content="0"/> 
+  <meta http-equiv="Date"    content="Thu, 12 Dec 2000 23:27:21 GMT"/> 
+
+  <form>
+    <block>
+        <prompt>Hello</prompt> 
+    </block>
+  </form>
+</vxml>

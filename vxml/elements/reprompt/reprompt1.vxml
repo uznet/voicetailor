@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+
+<vxml version="2.1">
+<form>
+	<var name="test" expr="10"/>
+	<field name="field_test1" cond="test > 5">
+		<prompt>
+		원하는 도시를 말씀하세요
+		</prompt>
+		<prompt count="2">
+		   한국,북한,중국,미국,일본 둥 하나를 말씀하세요 !
+		</prompt>
+        <grammar version="1.0" mode="voice" root="citys">
+                 <rule id="citys">
+                   <one-of>
+                    <item>한국</item>
+                    <item>북한</item>
+                    <item>중국</item>
+                    <item>미국</item>
+                    <item>일본</item>
+                   </one-of>
+                 </rule>
+	     </grammar>
+	     <property name="inputmodes" value="voice" />
+ 	    <filled>
+		<audio>
+ 	       감사합니다. 	       
+		    confidence 는  <value expr="field_test1$.confidence"/> 입니다.
+		    utterance 는  <value expr="field_test1$.utterance"/> 입니다.
+		    input mode 는  <value expr="field_test1$.inputmode"/>입니다.
+		    interpretation 은 <value expr="field_test1$.interpretation"/> 입니다.
+ 	       
+ 	       종료하겠습니다.
+		   </audio>
+ 	       <exit/>
+        	       
+ 	    </filled>
+ 	    
+ 	    <nomatch>
+ 	       잘못 말씀하셨습니다.
+           <reprompt/> 	      
+ 	    </nomatch>
+ 	    <noinput>
+ 	       입력이 없습니다.
+ 	       <reprompt/> 
+ 	    </noinput>
+	</field>
+	
+</form>
+</vxml>

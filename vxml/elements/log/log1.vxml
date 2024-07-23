@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1">
+<form>
+   <var name="uid" expr="12345"/>
+  
+   <block>
+      로그 테스트입니다.
+      <log label="log1" >Hello, world.</log>
+      <log label="log2" >uid is <value expr="uid"/></log>
+   </block>
+</form>
+</vxml>

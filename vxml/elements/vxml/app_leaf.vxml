@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1"  application="app_root.vxml">
+
+ <form id="say_goodbye">
+  <block>
+     <value expr="application.hello"/>     
+  </block>
+  <field name="answer" type="digits">
+     <prompt> 임의숫자 를 입력하시고 우물정을 누르세요</prompt>
+     <filled>
+        <if cond="answer =='2580'">
+           <throw event="intercept" />
+        <else/>   
+           <prompt>
+             입력하신 내용은 <value expr="answer"/> 입니다.
+            <value expr="application.bye"/>
+           </prompt>   
+         </if>  
+              
+     </filled>
+  </field>
+ </form>
+</vxml>

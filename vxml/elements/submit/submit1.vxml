@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+
+<vxml version="2.1" >
+<form> 
+  <subdialog name="result" src="#getssn"> 
+    <catch event="wrong_input"> 
+      <!-- a no match event that is returned by the
+          subdialog indicates that a valid Social Securityy
+          number could not be matched. --> 
+      <goto next="wrong_input.vxml"/> 
+    </catch> 
+
+    <filled> 
+    <!--
+      <prompt>감사합니다.입력하신 내용은 <value expr="result.ssn" /> 입니다.</prompt>
+      -->
+      <submit namelist="result.ssn" next="success.vtwsp"/> 
+    </filled> 
+  </subdialog> 
+</form>
+<form id="getssn"> 
+  <field name="ssn" type="digits?length=4"> 
+      <prompt> 임의의 숫자 4자리누르고 우물정을 누르세요.</prompt> 
+      <catch event="nomatch noinput" ><reprompt/> </catch>
+      <nomatch count="3">
+        <return event="wrong_input"/> 
+      </nomatch> 
+      <filled> 
+        <return namelist="ssn"/> 
+      </filled> 
+  </field> 
+</form>
+</vxml>

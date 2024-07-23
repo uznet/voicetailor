@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1" >
+<!-- form dialog that calls a subdialog -->
+<form>
+
+
+  <subdialog name="result" src="./get_license.vxml#getdriverslicense">
+   <param name="birthday" expr="'2000-02-10'"/>
+   <filled>
+     <prompt>
+     입력하신 번호는 <value expr="result.drivelicense" /> 입니다.
+     면허상태는  <value expr="result.status" /> 입니다.
+     </prompt>
+     <submit next="http://myservice.example.com/cgi-bin/process"/>
+   </filled>
+  </subdialog>
+</form>
+
+</vxml>

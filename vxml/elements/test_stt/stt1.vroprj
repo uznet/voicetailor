@@ -1,0 +1,21 @@
+{
+	"name": "stt1",
+	"file": "D:\\job\\RESTApi\\voicero\\doc\\content\\examples\\test_stt\\stt1.vroprj",
+	"voicexml": [
+		{
+			"file": "D:\\job\\RESTApi\\voicero\\doc\\content\\examples\\test_stt\\stt_1.vxml"
+		}
+	],
+	"ccxml": [
+		
+	],
+	"srgs": [
+		
+	],
+	"text": [
+		
+	],
+	"audio": [
+		
+	]
+}

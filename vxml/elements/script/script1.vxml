@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE vxml PUBLIC "-//W3C//DTD VOICEXML 2.1//EN" 
+  "http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.dtd">
+<vxml version="2.1" xml:lang="en-US">
+<script>
+<![CDATA[
+   // declare array of advertisements
+   // an ad consists of a (tts, wav) hash tuple
+   var aAds = [
+      {"tts" : "Brought to you by ack me airlines.", "wav" : "aa.wav"},
+      {"tts" : "Brought to you by virtual traders.", "wav" : "vt.wav"},
+      {"tts" : "Brought to you by napa vineyards.", "wav" : "nv.wav"},	
+   ];
+
+   // pick a random ad from the array
+   function GetRandomAd()
+   {
+      // get a number between 0 and and the number of ads minus one
+      var iAd = Math.floor(Math.random()*aAds.length);
+      return aAds[iAd];
+   }
+]]>
+</script>
+
+<form id="play_ad">
+   <block>
+      <var name="oAd" expr="GetRandomAd()"/>
+      <audio expr="oAd.wav">
+        <value expr="oAd.tts"/>
+      </audio>
+   </block>
+</form>
+</vxml>
