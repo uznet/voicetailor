@@ -18,4 +18,4 @@
 - Voicetailor  는 STT 커넥터 를 통해 실시간으로 multi-vendor STT(Speech-to-Text) 엔진을 실행합니다  
 - VoiceXML 문서 에서 Language(언어) 실시간으로 선택할수 있기 때문에  다국어가 지원되는 VUI(Voice User Interface)를 쉽게 개발할 수 있습니다.
 ### Getting Started
-- [voicetailor.com](https://www.voicetailor.com/ivr2/html/getstarted.html)  에서  Voicetailor를 체험 할 수 있습니다.
+- [voicetailor.com](https://www.voicetailor.com/vtnode/html/getstarted.html)  에서  Voicetailor를 체험 할 수 있습니다.
