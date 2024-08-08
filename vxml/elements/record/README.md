@@ -1,7 +1,7 @@
 # \<record> tag
-# Purpose 
-## Recordd User input.
-# Syntax
+## Purpose 
+### Recordd User input.
+## Syntax
 \<record\
 name = "string"\
 expr = "ECMAScript_Expression"\
@@ -15,7 +15,7 @@ maxtime = "string"\
 />
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |name |녹음된 데이터에 대한 참조를 저장하는 변수의 이름입니다.| false| internal name|
@@ -37,7 +37,7 @@ maxtime = "string"\
 |    |›audio/wav - File format = .WAV, meta-format = RIFF, compression = ulaw, 8-bit, 8 kHz, 64 kps, mono |||
 
 
-# Shadow Vriable
+## Shadow Vriable
 |Name |Description |
 |-----|------------|
 |name$.duration |녹음시간 (밀리 초)|
@@ -47,8 +47,8 @@ maxtime = "string"\
 
 
 
-# Notes
+## Notes
 None
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml2.3.6
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml2.3.6
