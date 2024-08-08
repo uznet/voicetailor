@@ -1,8 +1,8 @@
 # \<transfer> tag
-# Purpose 
-## \<transfer> 엘리먼트는 호출자를 다른 entity (전화선 또는 다른 voice 응용 프로그램)에 연결하도록 인터프리터에게 지시합니다. \<transfer> 작업 중에 현재 인터프리터 세션이 일시 중단됩니다.
+## Purpose 
+### \<transfer> 엘리먼트는 호출자를 다른 entity (전화선 또는 다른 voice 응용 프로그램)에 연결하도록 인터프리터에게 지시합니다. \<transfer> 작업 중에 현재 인터프리터 세션이 일시 중단됩니다.
 
-# Syntax
+## Syntax
 \<transfer
 name = "string"
 expr = "ECMAScript_Expression"
@@ -20,7 +20,7 @@ transferaudio = "URI"
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |name|Bridge transfer 결과를 저장합니다.|false||
@@ -42,10 +42,10 @@ transferaudio = "URI"
 
 
 
-# Notes
+## Notes
 -정확히 "bridge"또는 "type"속성 중 하나가 지정 될 수 있습니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
 
-# Shadow Variables:
+## Shadow Variables:
 |name|	Description|
 |----|-------------|
 |name$.duration|	브리지 트랜스퍼에서 통화 연결후 통화시간. 통화연결이 않되었을경우 경우 0입니다|
@@ -53,5 +53,5 @@ transferaudio = "URI"
 |name$.inputmode|	종료 명령 (dtmf 또는 voice)의 입력 모드. 전송이 문법 일치로 종료되지 않은 경우  undefined|
 
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml2.3.7
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml2.3.7
