@@ -1,8 +1,8 @@
-# \<audio> tag
-# Purpose 
-## 녹음된 파일을 재생하거나 텍스트를 음성(TTS)으로 변환후 재생합니다
+## \<audio> tag
+## Purpose 
+### 녹음된 파일을 재생하거나 텍스트를 음성(TTS)으로 변환후 재생합니다
 
-# Syntax
+## Syntax
 \<audio expr = "ECMAScript_Expression" \
           fetchhint = "safe | prefetch" \
           fetchtimeout="w3ctime" \
@@ -10,7 +10,7 @@
           maxstale = "seconds"\
           src = "URI" >...\</audio> 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |src | 녹음 된 오디오 파일의 URI.   | false    |      |
@@ -23,6 +23,7 @@
 |maxage|cache된 data의 age가 지정된 second를 넘었을 경우 새로 fetch한다.|false||
 |maxstale|cache된 data의  maxage(second)를 넘었을 경우 새로 fetch한다.|false||
 
-## -정확히 "src"또는 "expr"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml4.1.3
+## Notes
+### -정확히 "src"또는 "expr"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml4.1.3
