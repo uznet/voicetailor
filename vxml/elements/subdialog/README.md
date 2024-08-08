@@ -1,8 +1,8 @@
 # \<send> tag
-# Purpose 
-##  subdialog 는 common dialog 를 재사용하고 재사용 가능한 application library 를 구축하기 위한 메커니즘입니다.
+## Purpose 
+###  subdialog 는 common dialog 를 재사용하고 재사용 가능한 application library 를 구축하기 위한 메커니즘입니다.
 
-# Syntax
+## Syntax
 \<subdialog\
 name = "string"\
 expr = "ECMAScript_Expression"\
@@ -21,7 +21,7 @@ maxstale = "seconds"\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |name|subdialog 로부터 리턴 된 결과값을 저장할 form item variable name|false|hidden|
@@ -34,9 +34,9 @@ maxstale = "seconds"\
 |srcexpr|ECMA Expression for src|false|undefined|
 
 
-# Notes
+## Notes
 -정확히 "src"또는 "srcexpr"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
 
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml2.3.4
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml2.3.4
