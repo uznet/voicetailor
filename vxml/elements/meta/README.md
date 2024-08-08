@@ -1,8 +1,8 @@
 # \<meta> tag
-# Purpose 
-## \<meta> 요소는 HTML과 마찬가지로 메타 정보를 지정합니다.
+## Purpose 
+### \<meta> 요소는 HTML과 마찬가지로 메타 정보를 지정합니다.
 
-# Syntax
+## Syntax
 \<meta\
 content = "string"\
 http-equiv = "string"\
@@ -11,7 +11,7 @@ name = "string"\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |content|The value of name | true   |      |
@@ -19,8 +19,8 @@ name = "string"\
 |name |A label identifying the type of meta information specified by content. You can define any type. ( if http-equiv is not specified)|false||    
 
 
-# Notes
+## Notes
 None
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml6.2.1
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml6.2.1
