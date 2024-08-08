@@ -1,8 +1,8 @@
 # \<menu> tag
-# Purpose 
-## 사용자에게 선택 목록을 표시하고 선택한 정보로 전환합니다
+## Purpose 
+### 사용자에게 선택 목록을 표시하고 선택한 정보로 전환합니다
 
-# Syntax
+## Syntax
 \<menu\
 accept = "exact | approximate"\
 dtmf = "boolean"\
@@ -12,7 +12,7 @@ scope = "document|dialog"\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |id|menu 이름 | false    |   hidden   |
@@ -26,8 +26,8 @@ scope = "document|dialog"\
 |dtmf |\<menu> element 에서 사용되는 \<choice> element에 지정되는 dtmf 사용을 활성화 할지 안할지를 지정한다.|false| true|    
 
 
-# Notes
+## Notes
 None
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml2.2.1
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml2.2.1
