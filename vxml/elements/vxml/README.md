@@ -1,8 +1,8 @@
 # \<vxml> tag
-# Purpose 
-## VoiceXML 문서의 최상위 요소
+## Purpose 
+### VoiceXML 문서의 최상위 요소
 
-# Syntax
+## Syntax
 <vxml\
 version = "string"\
 application = "URI"\
@@ -15,7 +15,7 @@ xml:lang = "string"\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |version |이 문서의 VoiceXML 버전.|true| |    
@@ -24,8 +24,8 @@ xml:lang = "string"\
 |xml:lang|이문서의 언어식별자.|false|undefined |    
 
 
-# Notes
+## Notes
 None
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml1.5.1
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml1.5.1
