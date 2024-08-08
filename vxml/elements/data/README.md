@@ -1,8 +1,8 @@
 # \<data> tag
-# Purpose 
-## 새로운 VoiceXML 문서로 전환하지 않고도 응용서버(HTTP 또는 trunk) 에서 XML (or JSON) 형식의 데이터에 프로그래밍 방식으로 액세스 할 수 있습니다. *.
+## Purpose 
+### 새로운 VoiceXML 문서로 전환하지 않고도 응용서버(HTTP 또는 trunk) 에서 XML (or JSON) 형식의 데이터에 프로그래밍 방식으로 액세스 할 수 있습니다. *.
 
-# Syntax
+## Syntax
 \<data\
 name = "item name"\
 src = "URI"\
@@ -18,7 +18,7 @@ maxstale = "seconds"/>
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |name|DOM 또는 JSON 형식의  변수 이름입니다. | true    |      |
@@ -29,7 +29,7 @@ maxstale = "seconds"/>
 |enctype|"application/x-www-form-urlencoded" or "multipart/form-data"|false|"application/x-www-form-urlencoded"|
 |namelist|전송할 변수 목록|false||
 
-# Notes
+## Notes
 -정확히 "src"또는 "srcexpr"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml21/#sec-data
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml21/#sec-data
