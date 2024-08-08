@@ -1,8 +1,8 @@
 # \<submit> tag
-# Purpose 
-## HTTP GET 또는 POST 요구에 의해 새로운 document server 에 값을 제출하고 새로운 document 를 취득합니다.
+## Purpose 
+### HTTP GET 또는 POST 요구에 의해 새로운 document server 에 값을 제출하고 새로운 document 를 취득합니다.
 
-# Syntax
+## Syntax
 \<submit\
 next = "URI"\
 expr = "ECMAScript_Expression"\
@@ -18,7 +18,7 @@ maxstale = "seconds"\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |next|요청을 제출할 URI입니다.|false||
@@ -29,9 +29,9 @@ maxstale = "seconds"\
 
 
 
-# Notes
+## Notes
 -정확히 "src"또는 "srcexpr"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
 
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml5.3.8
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml5.3.8
