@@ -1,8 +1,8 @@
 # \<send> tag
-# Purpose 
-## VoiceXML 애플리케이션에서 remote endpoint 로 메시지를 보내려면 \<send>를 사용합니다.
+## Purpose 
+### VoiceXML 애플리케이션에서 remote endpoint 로 메시지를 보내려면 \<send>를 사용합니다.
 
-# Syntax
+## Syntax
 \<send\
 async=”true | false”\
 asyncexpr=”ECMA Expression”\
@@ -22,7 +22,7 @@ fetchaudioexpr = "ECMA Expression"\
 />
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |async|메시지전송 방법(동기 or 비동기)을 지정합니다|false|true|
@@ -48,7 +48,7 @@ fetchaudioexpr = "ECMA Expression"\
 
 
 
-# Notes
+## Notes
 -async 및 asyncexpr 중 하나만 지정해야합니다.그렁지않으면  "error.badfetch"가 발생합니다.
 
 -body , bodyexpr,event,eventexpr,namelist  중 하나만 지정해야합니다.그렁지않으면  "error.badfetch"가 발생합니다.
@@ -61,5 +61,5 @@ fetchaudioexpr = "ECMA Expression"\
 
 
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml30/#ExternalCommunicationModule:Send
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml30/#ExternalCommunicationModule:Send
