@@ -1,5 +1,6 @@
     
-## \<assgin> tag
+# \<assgin> tag
+## Purpose
 ### 미리 정의된 변수에 값을 할당합니다
 
 ## Syntax
