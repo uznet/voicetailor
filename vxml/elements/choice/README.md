@@ -1,8 +1,8 @@
 # \<choice> tag
-# Purpose 
-## 메뉴 항목을 정의합니다.
+## Purpose 
+### 메뉴 항목을 정의합니다.
 
-# Syntax
+## Syntax
 \<choice
 accept = “approximate | exact"\
 dtmf = “dtmf sequence"\
@@ -21,7 +21,7 @@ maxstale = "seconds"
 
 
 
-# Attributes
+## Attributes
 |Name  |Description |Required |Default|
 |------|------------|---------|-------|
 |accept|Exact-> 정확하게 일치할 때 match,   | false    |  exact    |
@@ -36,9 +36,9 @@ maxstale = "seconds"
 |        |문자열은 이벤트 처리기의 범위 내에서 _message 변수의 값으로 참조할수 있습니다.|| |   
 |messageexpr|ECMA Expression for message|false||
 
-# Notes
+## Notes
 -정확히 "next", "expr", "event"또는 "eventexpr"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.\
 -"message"또는 "messageexpr"중 하나만 지정할 수 있습니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml2.2.2
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml2.2.2
