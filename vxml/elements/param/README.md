@@ -1,7 +1,7 @@
 # \<param> tag
-# Purpose 
-## \<object> 또는 \<subdialog>의 매개 변수에 사용한다.
-# Syntax
+## Purpose 
+### \<object> 또는 \<subdialog>의 매개 변수에 사용한다.
+## Syntax
 \<param\
 expr = "ECMAScript_Expression"\
 name = "string"\
@@ -14,7 +14,7 @@ type=”MIME-type”\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |name |	\<object> 또는 \<subdialog>가 호출 될 때 매개 변수 이름입니다|true|undefined|
@@ -25,8 +25,8 @@ type=”MIME-type”\
 |type|	valuetype 이  ref 인 경우 URI의 MIME-type. 을 지정.\<object>에서  유효합니다.|false|	MIME-type|
 
 
-# Notes
+## Notes
 -정확히 "expr"또는 "value"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml6.4
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml6.4
