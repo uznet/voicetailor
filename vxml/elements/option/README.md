@@ -1,7 +1,7 @@
 # \<option> tag
-# Purpose 
-## \<field>에서 옵션 지정
-# Syntax
+## Purpose 
+### \<field>에서 옵션 지정
+## Syntax
 \<option\
 dtmf = "integer"\
 accept=”exact | approximate”\
@@ -12,7 +12,7 @@ value = "string"\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |dtmf|간단한 DTMF grammar와 동일 한 DTMF sequence.| false    |  undefined   |
@@ -21,8 +21,8 @@ value = "string"\
 |value|사용자가이 옵션을 선택할 때 필드의 양식 항목 변수에 지정할 문자열입니다 |false|undefined|    
 
 
-# Notes
+## Notes
 None
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml2.3.1.3
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml2.3.1.3
