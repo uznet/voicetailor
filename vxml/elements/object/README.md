@@ -1,7 +1,7 @@
 # \<object> tag
-# Purpose 
-## VoiceXML 애플리케이션에서 플랫폼 종속적인 기능을 사용할수 있도록 합니다
-# Syntax
+## Purpose 
+### VoiceXML 애플리케이션에서 플랫폼 종속적인 기능을 사용할수 있도록 합니다
+## Syntax
 \<object\
 name = "ECMAScript_variable"\
 expr = "ECMAScript_variable"\
@@ -21,7 +21,7 @@ maxstale = "seconds"\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |name|object 실행결과값을 보유하는 변수 이름| true    |  internal   |
@@ -41,8 +41,8 @@ maxstale = "seconds"\
 |type|data의 콘텐츠 형식입니다.|false||
 
 
-# Notes
+## Notes
 None
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml2.3.5
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml2.3.5
