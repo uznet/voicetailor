@@ -1,8 +1,8 @@
 # \<link> tag
-# Purpose 
-## 링크의 범위에있는 \<grammar> 와 일치할 때 새 문서 로 전환하거나 <throw>와 같은 이벤트를 발생시킵니다
+## Purpose 
+### 링크의 범위에있는 \<grammar> 와 일치할 때 새 문서 로 전환하거나 <throw>와 같은 이벤트를 발생시킵니다
 
-# Syntax
+## Syntax
 \<link\
 dtmf = "string"\
 next = "URI"\
@@ -19,7 +19,7 @@ maxstale = "seconds"\
 />
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |dtmf|간단한 DTMF <grammar>과 동일 한 DTMF sequence | false    |      |
@@ -31,9 +31,9 @@ maxstale = "seconds"\
 ||문자열은 이벤트 처리기의 범위 내에서 document._message 변수의 값으로 참조할수 있습니다|||
 |messageexpr|ECMA expression for event|false|||
 
-# Notes
+## Notes
 -정확히 "next", "expr", "event"또는 "eventexpr"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다. \
 -"message"또는 "messageexpr"중 하나만 지정할 수 있습니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml2.5
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml2.5
