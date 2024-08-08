@@ -1,7 +1,7 @@
 # \<throw> tag
-# Purpose 
-## 시스템 또는 사용자 정의 이벤트를 생성합니다.
-# Syntax
+## Purpose 
+### 시스템 또는 사용자 정의 이벤트를 생성합니다.
+## Syntax
 \<throw\
 event = "event"\
 eventexpr = "ECMAScript_Expression"\
@@ -9,7 +9,7 @@ message = "string"\
 messageexpr = "ECMAScript_Expression"\
 />
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |event|Throw 될 이벤트|true||
@@ -19,8 +19,8 @@ messageexpr = "ECMAScript_Expression"\
 |messageexpr|ECMA Expression for message|false||
 
 
-# Notes
+## Notes
 -정확히 "expr"또는 "value"중 하나를 지정해야합니다. 그렇지 않으면 error.badfetch 이벤트가 발생합니다.
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml5.2.1
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml5.2.1
