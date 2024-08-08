@@ -1,7 +1,7 @@
 # \<prompt> tag
-# Purpose 
-## 대화형 대화에서 녹음된 오디오와 합성된 텍스트를 음성으로 변환합니다.
-# Syntax
+## Purpose 
+### 대화형 대화에서 녹음된 오디오와 합성된 텍스트를 음성으로 변환합니다.
+## Syntax
 \<prompt
 bargein = "boolean"\
 bargeintype = "speech | hotword"\
@@ -15,7 +15,7 @@ xml:lang=”string”\
 
 
 
-# Attributes
+## Attributes
 |Name |Description |Required |Default|
 |-----|------------|---------|-------|
 |bargein|사용자가 프롬프트를 중단할 수 있는지 여부를 제어합니다.| false    |  true  |
@@ -30,8 +30,8 @@ xml:lang=”string”\
 |xml:lang|언어 식별자 |false||
 
 
-# Notes
+## Notes
 None
 
-# Additional Reference Site
-## https://www.w3.org/TR/voicexml20/#dml4.1
+## Additional Reference Site
+### https://www.w3.org/TR/voicexml20/#dml4.1
