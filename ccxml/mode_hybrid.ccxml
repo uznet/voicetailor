@@ -16,16 +16,16 @@
     
         <eventprocessor statevariable="stateStep">           
            <transition event="ccxml.loaded" >     
-             <log label="'co:ccxml.loaded.event$'" expr= "JSON.stringify(event$)" />              
-             <log label="'co:ccxml.loaded.application'" expr= "JSON.stringify(application)" />              
-             <log label="'sipid'" expr= "application.findSipConnectionId()" />
+             <log label="'hybrid:ccxml.loaded.event$'" expr= "JSON.stringify(event$)" />              
+             <log label="'hybrid:ccxml.loaded.application'" expr= "JSON.stringify(application)" />              
+             <log label="'hybrid:sipid'" expr= "application.findSipConnectionId()" />
 
              <accept connectionid="application.connectionid" />             
            </transition>
 
 		<!-- ============================= CONNECTION ============================= -->
            <transition  event="connection.alerting" >
-               <log label="'connection.alerting'" expr= "session.connections[event$.connectionid].remote" />
+               <log label="'hybrid:connection.alerting'" expr= "session.connections[event$.connectionid].remote" />
                <accept />
            </transition>
 
