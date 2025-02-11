@@ -1,11 +1,14 @@
 <%?
  
-  var cxvm$   = VTTemplate.Args.cxvm;
-  var mmi$    = cxvm$.vxml.reqCollect.promptq.mmi;
-  var promptq$ =  cxvm$.vxml.reqCollect.promptq;
-  var medias$ = cxvm$.vxml.reqCollect.promptq.medias;
- //var mp3enabled$ = mmi$.interaction.extra.mp3enabled;//cxvm$.audio.enabled; 
- 
+  var cxvm$    = VTTemplate.Args.cxvm;
+  var promptq$ = cxvm$.vxml.reqCollect.promptq;
+  var mmi$     = cxvm$.vxml.reqCollect.promptq.mmi;
+  var medias$  = cxvm$.vxml.reqCollect.promptq.medias;
+  var dtmfGrammarList$=cxvm$.vxml.reqCollect.grammarDtmf.grammarList;
+  var speechGrammarList$=cxvm$.vxml.reqCollect.grammarSpeech.grammarList;
+  
+
+  //var inputmode$ = promptq$.inputmode;
  function _getAudioItem$(pos)
  { 
      for(i in medias$.mediaList){
@@ -96,7 +99,7 @@
  
 ~%>
 
-
+    
 
 
 	<div data-role="page" id="vtdialog"> 
@@ -132,6 +135,13 @@
         var dialogid$ ="<%=cxvm$.vxml.dialogid~%>";	   	  
         var id$ ="<%=cxvm$.vxml.id~%>";	   	  
         var syncid$="<%=cxvm$.vxml.syncid~%>";	   	  
+        var inputmode$ ="<%=promptq$.inputmode~%>";
+        var dtmfgramid$="<%=dtmfGrammarList$.length > 0 ? dtmfGrammarList$[0].id :'' ~%>";
+        var speechgramid$="<%=speechGrammarList$.length > 0 ? speechGrammarList$[0].id :'' ~%>";
+        
+        	      
+    
+       
 
 		var _audioTranslateResult=function(success,jvalue)
 		{
@@ -209,6 +219,19 @@
            resMsg.vxml.syncid = syncid$;
            resMsg.vxml.resCollect = new CXVVxmlCollectResult();
 		   
+		   
+		   if(eventName==CXVConst.CXVVXML_COLLECT_RESULT_UTTERANCE)
+		   {
+		     var grammarId = inputmode == "dtmf" ? dtmfgramid$ : speechgramid$; 
+		     var nlsmlResult = VTView.nlsml_generate_filled_result(utterance,inputmode,"1.0",grammarId);
+		   
+		     resMsg.vxml.resCollect.result = new CXVVxmlResultInfo(true, CXVConst.CXVVXML_COLLECT_RESULT_FILLED, "application/nlsml+xml",nlsmlResult);
+		   }
+		   else 
+           {		   
+		     resMsg.vxml.resCollect.result = new CXVVxmlResultInfo(true, CXVConst.CXVVXML_COLLECT_RESULT_EVENT, "text/plain","stop");
+		   }
+		   /*
 		   resMsg.vxml.resCollect.result = new CXVVxmlResultInfo(true, eventName, "","");
            resMsg.vxml.resCollect.inputmode = inputmode;
            resMsg.vxml.resCollect.recgrammar = "";
@@ -217,7 +240,7 @@
            resMsg.vxml.resCollect.interpdata ="";
            resMsg.vxml.resCollect.interptype ="";
            resMsg.vxml.resCollect.confidence = 1.0;
-		   
+		   */
 			
 		   _emit_cxvm$(resMsg);	
 		
@@ -244,10 +267,12 @@
 			
 			if(uinput)
             {	
-               var utter = uinput.value;				
+               var utter = uinput.value;		
 			   //alert(utter);
     		   if(utter.length > 0)
 		    	{				
+		    	   
+		    	    
 				   _collectResult$(CXVConst.CXVVXML_COLLECT_RESULT_UTTERANCE,_isOnlyDigits(utter) ? "dtmf" : "speech",utter);
 			    }
 				else

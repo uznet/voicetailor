@@ -203,7 +203,7 @@
 			   for(i in _buttons) {
 				  var b = _buttons[i]; ~%>
   		     	  <button type="button" data-icon="arrow-l" data-iconpos="left" 
-				          onclick="_collectResult$('filled','<%=b.onclick.mode~%>','<%=b.onclick.utterance~%>')"> <%=b.text~%> </button>
+				          onclick="_collectResult$(true,'<%=b.onclick.mode~%>','<%=b.onclick.utterance~%>')"> <%=b.text~%> </button>
 		    <%? }~%>
 		</div>
 		<div data-role="footer" data-position="fixed">
@@ -285,7 +285,7 @@
 			  }
 		 } ~%>
 
-        function _collectResult$(eventName,inputmode,utterance,grammarId) //,utterance,interpretation) 
+        function _collectResult$(selected,inputmode,utterance,grammarId) //,utterance,interpretation) 
 	    {				
            var resMsg = new CXVMessage(CXVConst.CXV_TYPE_VXML);
 
@@ -295,6 +295,19 @@
            resMsg.vxml.syncid = syncid$;
            resMsg.vxml.resCollect = new CXVVxmlCollectResult();
 		   
+		   
+		   if(selected)
+		   {
+		     var nlsmlResult = VTView.nlsml_generate_filled_result(utterance,inputmode,"1.0",grammarId);
+		     resMsg.vxml.resCollect.result = new CXVVxmlResultInfo(true, CXVConst.CXVVXML_COLLECT_RESULT_FILLED, "application/nlsml+xml",nlsmlResult);
+		   }
+		   else 
+           {		   
+		     resMsg.vxml.resCollect.result = new CXVVxmlResultInfo(true, CXVConst.CXVVXML_COLLECT_RESULT_EVENT, "text/plain","stop");
+		   }
+		   
+		   
+		   /*
 		   resMsg.vxml.resCollect.result = new CXVVxmlResultInfo(true, eventName, "","");
            resMsg.vxml.resCollect.inputmode = inputmode;
            resMsg.vxml.resCollect.recgrammar = grammarId;
@@ -303,6 +316,7 @@
            resMsg.vxml.resCollect.interpdata ="";
            resMsg.vxml.resCollect.interptype ="";
            resMsg.vxml.resCollect.confidence = 1.0;
+		   */
 		   
 			
 		   _emit_cxvm$(resMsg);	
@@ -328,13 +342,13 @@
             return undefined;      
         }
 		
-		var   grammarId$="";
+		var   grammarId$=undefined;
 		function _nextClick$()
 		{
 		  var selected = _getSelectedRadio$();
 		  if(selected)
 		  {
-			 _collectResult$(CXVConst.CXVVXML_COLLECT_RESULT_UTTERANCE,'dtmf',selected.value,grammarId$);
+			 _collectResult$(true,'dtmf',selected.value,grammarId$);
 		  }
 		  else
 		  {
@@ -350,7 +364,7 @@
 	    function _eventReceiver$(type,cxvm)
 	    {
 		    if(cxvm.name == CXVConst.CXVVXML_STOP)
-               _collectResult$(CXVConst.CXVVXML_COLLECT_RESULT_NOINPUT,"","",""); //,utterance,interpretation) 
+               _collectResult$(false,"","",""); //,utterance,interpretation) 
 			
 	    }
 	    _setEventDispatch$(_eventReceiver$); 

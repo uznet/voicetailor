@@ -3,7 +3,6 @@
   var mmi$    = cxvm$.vxml.reqPlay.promptq.mmi;
   var promptq$ =  cxvm$.vxml.reqPlay.promptq;
   var medias$   = cxvm$.vxml.reqPlay.promptq.medias;
-  console.log(JSON.stringify(cxvm$));
  function _getAudioItem$(pos)
  { 
      for(i in medias$.mediaList){

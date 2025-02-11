@@ -22,6 +22,7 @@ if(typeof (VTView) != 'object')
           var  _errorOut ="";  
           var  _errorCount=0;
           
+          console.log(" VTView.transform:start");
           var  _errorOut=function(tag,reason)
           {		
                _errorOut += tag  ;
@@ -60,7 +61,7 @@ if(typeof (VTView) != 'object')
       
           var _fetchTemplateResult=function(cxvm,status,xResponse)
           {			
-                console.log("_fetchTemplateResult:"+status);
+                console.log("_fetchTemplateResult:"+templateUrl+"->"+status);
                 if(status == 'success' )				
                 {
                     var status = "error";                    
@@ -72,6 +73,8 @@ if(typeof (VTView) != 'object')
                     _errorCount=0;
 
                     try{
+						
+						console.log(JSON.stringify(cxvm));
 					   VTTemplate.Args.cxvm = cxvm;
 					   
                        VTTemplate.render(text);
@@ -171,6 +174,8 @@ if(typeof (VTView) != 'object')
            
       }
 
+      console.log("VTView.getTemplateUrl->"+template);
+
       return template;
     }
 
@@ -269,7 +274,8 @@ if(typeof (VTView) != 'object')
           jvalue = xResponse;
         }
         cbResult(status=="success",jvalue);
-    }
+      }
+      
       params = encodeURI(params); 
       VTHttpClient.get("publicfy",
         url,
@@ -279,6 +285,41 @@ if(typeof (VTView) != 'object')
         "json",
         _publicfyResult);
     }
+    
+    //===========================================================
+    
+    
+    
+    
+    VTView.nlsml_generate_noinput_result=function()
+	{
+		var output =  '<?xml version="1.0" encoding="utf-8"?>';
+			
+		output += "<result>";
+		output += "<interpretation>";
+		output += "<input><noinput/></input>";
+		output += "</interpretation>";
+		output += "</result>";
+			
+		return output;
+	}
+		
+	VTView.nlsml_generate_filled_result=function( utterance,  mode,  confidence, grammar)
+	{
+		var output =  '<?xml version="1.0" encoding="utf-8"?>';
+		
+		output += "<result>";
+		output += "<interpretation grammar='"+grammar +"'>";
+		output += "<input mode='"+mode +"' confidence='"+confidence+"'>";
+		output += utterance;
+		output += "</input>";
+		output += "</interpretation>";
+		output += "</result>";
+					
+		return output;
+		    
+	}
+
 
 }
 

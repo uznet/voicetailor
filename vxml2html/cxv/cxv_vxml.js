@@ -636,7 +636,7 @@ function CXVVxmlCollectResult(jparent)
 {
 	var jresult = cxvJson.getValue(jparent,"result",{});
     //this.result = result;
-	
+	/*
     this.inputmode = cxvJson.getValue(jparent,"inputmode","");//inputmode;
     this.recgrammar = cxvJson.getValue(jparent,"recgrammar","");;
     this.utterance = cxvJson.getValue(jparent,"utterance","");
@@ -644,6 +644,7 @@ function CXVVxmlCollectResult(jparent)
     this.interpdata = cxvJson.getValue(jparent,"interpdata","");
     this.interptype = cxvJson.getValue(jparent,"interptype","");
     this.confidence = cxvJson.getValue(jparent,"confidence",1.0);
+    */
 
     this.result = new CXVVxmlResultInfo(jresult);
 		
@@ -652,7 +653,7 @@ function CXVVxmlCollectResult(jparent)
 
 CXVVxmlCollectResult.prototype.objectify=function(jparent)
 {
-
+/*
         cxvJson.putValue(jparent,"inputmode",this.inputmode);
         cxvJson.putValue(jparent,"recgrammar",this.recgrammar);
         cxvJson.putValue(jparent,"utterance",this.utterance);
@@ -660,6 +661,7 @@ CXVVxmlCollectResult.prototype.objectify=function(jparent)
         cxvJson.putValue(jparent,"interpdata", this.interpdata);
         cxvJson.putValue(jparent,"interptype", this.interptype);
         cxvJson.putValue(jparent,"confidence", this.confidence);
+        */
 		//cxvJson.putValue(jparent,"result",this.result);
         this.result.objectify(jparent);
 }

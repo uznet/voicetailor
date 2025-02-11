@@ -49,9 +49,11 @@ if(typeof (CXVConst) != 'object')
    CXVConst.CXVVXML_ERROR_UNSUPPORTED_OBJECTNAME = "error.unsupported.objectname";
    //============================== COLLECT RESULT ============
    CXVConst.CXVVXML_COLLECT_RESULT_FILLED   =  "filled" ;
+   /*
    CXVConst.CXVVXML_COLLECT_RESULT_UTTERANCE   =  "utterance" ;
    CXVConst.CXVVXML_COLLECT_RESULT_NOINPUT  =  "noinput";
    CXVConst.CXVVXML_COLLECT_RESULT_NOMATCH  =  "nomatch";
+   */
    CXVConst.CXVVXML_COLLECT_RESULT_MAXSPEECHTIMEOUT  =  "maxspeechtimeout";
    CXVConst.CXVVXML_COLLECT_RESULT_EVENT  =  "event";
    CXVConst.CXVVXML_COLLECT_RESULT_ERROR =  "error";
