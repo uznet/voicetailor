@@ -8,7 +8,7 @@
            <audio src="chinese.wav">
              韩国使用自己的语言，并使用韩文，这是朝鲜王朝世宗大王（1397-1450）创建的一种独特文字。 韩文因其易于学习和使用而被国际公认为优秀的字母表。 尤其是它在科学上的突出之处在于它可以通过组合24个字母来记录大量语音。
            </audio>
-           <goto next="intro.vxml" />			
+           <goto next="welcome.vxml" />			
 
       </block>
  	 </form>

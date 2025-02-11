@@ -10,7 +10,7 @@
              Hangul has been recognized internationally as an excellent alphabet because it is easy to learn and use. In particular, 
              it is scientifically outstanding in that it can record a large number of speech sounds by combining 24 letters. 
            </audio>
-           <goto next="intro.vxml" />			           
+           <goto next="welcome.vxml" />			           
       </block>
  	 </form>
 

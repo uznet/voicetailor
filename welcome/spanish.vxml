@@ -11,7 +11,7 @@
             Hangul ha sido reconocido internacionalmente como un alfabeto excelente porque es fácil de aprender y utilizar. En particular, 
             destaca científicamente porque puede grabar una gran cantidad de sonidos del habla combinando 24 letras 
             </audio>
-         <goto next="intro.vxml" />			
+         <goto next="welcome.vxml" />			
         </block> 
           
      </form>

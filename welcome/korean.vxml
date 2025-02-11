@@ -10,7 +10,7 @@
             한글은 쉽게 배우고 쓸 수 있다는 점 때문에 세계적으로 우수한 문자로 인정받았다. 
             특히 24개 자모를 결합하여 매우 많은 말소리를 기록할 수 있다는 점에서 과학적으로 뛰어나다. 
           </audio>
-         <goto next="intro.vxml" />			
+         <goto next="welcome.vxml" />			
        </block>
 	 </form>
 </vxml>

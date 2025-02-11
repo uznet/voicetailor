@@ -11,7 +11,7 @@
              Hangul gilt international als hervorragendes Alphabet, da es leicht zu erlernen und zu verwenden ist. Wissenschaftlich herausragend ist es insbesondere dadurch, 
              dass es durch die Kombination von 24 Buchstaben eine große Anzahl von Sprachlauten aufzeichnen kann.
             </audio>
-         <goto next="intro.vxml" />			
+         <goto next="welcome.vxml" />			
       </block>
 	 </form>
 

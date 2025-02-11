@@ -48,6 +48,18 @@
 			"lastupload": "1900-01-01 오전 12:00:00",
 			"errorcount": 0,
 			"errortext": ""
+		},
+		{
+			"file": "send.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
+		},
+		{
+			"file": "input.vxml",
+			"lastupload": "1900-01-01 오전 12:00:00",
+			"errorcount": 0,
+			"errortext": ""
 		}
 	],
 	"ccxml": [

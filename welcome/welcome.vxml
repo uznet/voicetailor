@@ -9,7 +9,7 @@
     <menu id="intro">
         <property name="inputmodes" value="dtmf voice"/>
         <property name="interdigittimeout" value="1s"/>
-        <property name="termchar" value="#"/>
+        <property name="termchar" value=""/>
 
 	    <prompt timeout="3s" bargein="true">		         
 		    <audio src="intro.txt.wav">
